@@ -1,0 +1,6 @@
+{
+  "name": "ai-travel-planner",
+  "version": "1.0.0",
+  "description": "AI-powered travel planner using Groq",
+  "private": true
+}

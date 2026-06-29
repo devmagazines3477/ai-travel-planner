@@ -1,0 +1,132 @@
+=========================================
+VERCEL DEPLOY GUIDE — AI TRAVEL PLANNER
+=========================================
+(15 minute mein live ho jayega)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 1 — FILES STRUCTURE CHECK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Tumhare paas yeh folder structure hona chahiye:
+
+travel-planner/
+├── api/
+│   └── generate.js       ← backend (Groq key yahan chupi hai)
+├── public/
+│   └── index.html        ← frontend (user yahi dekhega)
+├── vercel.json           ← Vercel config
+└── package.json
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 2 — GITHUB PE UPLOAD KARO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. github.com pe jaao → Sign up / Login
+2. "New repository" click karo
+3. Name: "ai-travel-planner"
+4. Private rakh sakte ho (free mein bhi kaam karta hai)
+5. "Create repository" click karo
+
+Ab files upload karo:
+- "uploading an existing file" link click karo
+- travel-planner folder ke andar se saari files drag karo
+  (api folder, public folder, vercel.json, package.json)
+- "Commit changes" click karo
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 3 — VERCEL PE DEPLOY KARO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. vercel.com pe jaao → "Sign Up with GitHub"
+2. "Add New Project" click karo
+3. GitHub se "ai-travel-planner" repo select karo
+4. Import click karo
+
+Settings mein:
+- Framework Preset: "Other" select karo
+- Root Directory: khali chhodo (default)
+- Build Command: khali chhodo
+- Output Directory: "public" type karo
+
+"Deploy" click karo — 1-2 minute wait karo
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 4 — GROQ API KEY DAALO (MOST IMPORTANT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Deploy hone ke baad:
+
+1. Vercel dashboard mein project open karo
+2. "Settings" tab click karo
+3. Left sidebar mein "Environment Variables" click karo
+4. Add karo:
+   - Key:   GROQ_API_KEY
+   - Value: gsk_xxxxxxxx (tumhari actual key)
+   - Environment: Production, Preview, Development — sab tick karo
+5. "Save" click karo
+
+6. Ab "Deployments" tab mein jaao
+7. Latest deployment pe "..." click karo → "Redeploy"
+8. Wait karo — done!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — TEST KARO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Tumhara URL hoga: https://ai-travel-planner-xxxx.vercel.app
+(ya custom domain bhi laga sakte ho)
+
+- Destination: Dubai, UAE
+- Budget: 1000
+- Generate karo
+
+Kaam kare toh — LIVE hai! 🎉
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ETSY PE KAISE SELL KARO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ab Etsy pe yeh sell karo:
+
+Option A — URL as Digital Product:
+  - Ek PDF banao jisme sirf URL likha ho + screenshot
+  - "Access Link" as digital download sell karo ($7.99)
+  - Customer download kare → URL open kare → use kare
+
+Option B — HTML file sell karo:
+  - Pehli wali standalone file (api-travel-planner.html)
+  - Customer apni Groq key use kare
+  - Thoda zyada friction but koi server cost nahi
+
+RECOMMENDED: Option A
+  - Zyada professional lagta hai
+  - Customer experience smooth hai
+  - Tumhara tool = tumhara brand
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RATE LIMIT SETTINGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+api/generate.js mein line 1 pe:
+  const DAILY_LIMIT = 3;
+
+Badal sakte ho:
+  3  → casual use ke liye (default)
+  5  → zyada generous
+  10 → paid users ke liye (baad mein)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GROQ FREE TIER LIMITS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LLaMA 3.3 70B free tier:
+  - 14,400 requests/day
+  - 500,000 tokens/minute
+
+Matlab: ~1000-2000 trip plans per day free mein
+Kafi hai start ke liye!
+
+Agar zyada traffic aaye → Groq paid plan ($0.59/million tokens)
+1000 trip plans ≈ $1-2 cost
+
+=========================================
